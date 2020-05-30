@@ -1,0 +1,16 @@
+<!doctype html>
+<title>Doubtnut</title>
+<h1> DoubtNut Related questions </h1>
+
+{% for question in questions %}
+    <p>{{question.text}}</p>
+    {% for image in question.images %}
+        <img src="{{image}}">
+    {% endfor %}
+    {% for link in question.videos %}
+        <link src="{{link}}">
+    {% endfor %}
+    <!-- <iframe width="1000" height="1000"
+    src="https://www.youtube.com/embed/tgbNymZ7vqY"> -->
+{% endfor %}
+
