@@ -32,6 +32,8 @@ RUN apt-get install -y xz-utils && \
     mv wkhtmltox/bin/wkhtmlto* /usr/local/bin && \
     apt-get install -y openssl libssl-dev libxrender-dev libx11-dev libxext-dev libfontconfig1-dev libfreetype6-dev fontconfig
 
+RUN apt-get install -y libssl1.0-dev
+
 COPY --from=builder /code/ .
 COPY . .
 

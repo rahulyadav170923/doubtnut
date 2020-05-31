@@ -1,0 +1,26 @@
+.assets {
+    padding-top: 10px;
+}
+
+.logo {
+    width: 5%;
+}
+
+.title {
+    display: flex;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    padding: 0 0 0 0px;
+}
+
+/* h1 {
+    padding-left: 50px;
+} */
+
+.question {
+    padding-top: 20px;
+}
+
+.main-container {
+    margin-left: 60px
+}

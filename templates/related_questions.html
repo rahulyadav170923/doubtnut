@@ -1,16 +1,42 @@
 <!doctype html>
+
+<head>
+    <link rel="stylesheet" href="https://res.cloudinary.com/rahulyadav179023/raw/upload/v1590886961/bootstrap.min_zuo2d4.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/related_questions.css') }}">
+</head>
 <title>Doubtnut</title>
-<h1> DoubtNut Related questions </h1>
 
-{% for question in questions %}
-    <p>{{question.text}}</p>
-    {% for image in question.images %}
-        <img src="{{image}}">
+<div class="main-container container">
+    <div class="title container">
+        <!-- <img class="logo" src="{{ url_for('static',filename='images/logo.png') }}" class="img-thumbnail"> -->
+        <img class="logo" src="https://res.cloudinary.com/rahulyadav179023/image/upload/v1590881075/logo_oaw33a.png" class="img-thumbnail">
+        <h1>Related questions </h1>
+    </div>
+    {% for i in range(questions|length) %}
+    <div class="question row">
+        <div class="col-md-2"><h4> Question {{i+1}}: </h4></div>
+        <div class="col-md-10">
+            <div>
+                {{questions[i].text}}
+            </div>
+            <div class="assets">
+                {% for image in questions[i].images %}
+                <img src="{{image}}" style="max-width: 100%">
+                {% endfor %}
+            </div>
+            <div class="assets">
+                <ul class="list-inline">
+                    Video's Links:
+                    {% for link in questions[i].videos %}
+                    <li>
+                        <a href="{{link}}" target="_blank">
+                            {{link}}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
     {% endfor %}
-    {% for link in question.videos %}
-        <link src="{{link}}">
-    {% endfor %}
-    <!-- <iframe width="1000" height="1000"
-    src="https://www.youtube.com/embed/tgbNymZ7vqY"> -->
-{% endfor %}
-
+</div>

@@ -9,3 +9,7 @@ class QuestionSchema(Schema):
 
 class RelatedQuestionsSchema(Schema):
     data = fields.List(fields.Nested(QuestionSchema))
+
+class PDFDataSchema(Schema):
+    data = fields.Raw()
+    pdf_type = fields.Str()

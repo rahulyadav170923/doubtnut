@@ -1,0 +1,27 @@
+FROM python:2.7-slim-stretch
+
+RUN  apt-get update && \
+     # installing basic tool chain
+     apt-get -y install build-essential git procps curl vim net-tools \
+     # requirement for postgreql
+     libpq-dev
+
+RUN apt-get install -y xz-utils wget && \
+    wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz && \
+    tar xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz && \
+    mv wkhtmltox/bin/wkhtmlto* /usr/local/bin && \
+    apt-get install -y openssl libssl-dev libxrender-dev libx11-dev libxext-dev libfontconfig1-dev libfreetype6-dev fontconfig
+
+RUN apt-get install -y libssl1.0-dev
+
+RUN pip install pip==19.2.1
+    
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+WORKDIR /code
+
+COPY . .
+
+ENTRYPOINT ["python", "main.py"]
